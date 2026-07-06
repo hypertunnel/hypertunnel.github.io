@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HyperTunnel: a VPN that works on school WiFi</title>
+<meta name="description" content="HyperTunnel is a private VPN with Australian servers that gets past school WiFi filters, the ones that block Nord, Proton and the free VPNs. Works on iPhone, Android, Windows and Mac. Setup takes about two minutes.">
+<meta name="keywords" content="vpn for school wifi, vpn that works on school wifi, unblock school wifi, school vpn, vpn for chromebook school, get past school filter">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f07220">
+<!-- Site URL: https://hypertunnel.github.io/ (used by canonical + Open Graph below) -->
+<link rel="canonical" href="https://hypertunnel.github.io/">
+
+<!-- icon -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<!-- social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HyperTunnel">
+<meta property="og:url" content="https://hypertunnel.github.io/">
+<meta property="og:title" content="HyperTunnel: a VPN that works on school WiFi">
+<meta property="og:description" content="A private VPN with Australian servers that gets past school WiFi filters when the usual VPNs are blocked. Any phone or laptop, set up in about two minutes.">
+<meta property="og:image" content="https://hypertunnel.github.io/favicon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HyperTunnel: a VPN that works on school WiFi">
+<meta name="twitter:description" content="Gets past school WiFi filters when Nord, Proton and free VPNs are blocked. Any phone or laptop, set up in about two minutes.">
+<meta name="twitter:image" content="https://hypertunnel.github.io/favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "HyperTunnel VPN",
+  "description": "A private VPN with Australian servers that gets past school WiFi filters. Works on iPhone, Android, Windows and Mac.",
+  "brand": { "@type": "Brand", "name": "HyperTunnel" },
+  "offers": [
+    { "@type": "Offer", "name": "Monthly", "price": "5.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "Term pass", "price": "12.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "School year", "price": "30.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Does it work on school WiFi?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your traffic looks like normal encrypted browsing, so filters that block regular VPNs usually don't detect it. It's been tested on Australian school networks." } },
+    { "@type": "Question", "name": "What devices does it work on?", "acceptedAnswer": { "@type": "Answer", "text": "iPhone, iPad, Android, Windows and Mac. Locked-down school Chromebooks that block installs can't run any VPN, so use your own phone on the school WiFi instead." } },
+    { "@type": "Question", "name": "How do I pay without a card?", "acceptedAnswer": { "@type": "Answer", "text": "Card is fastest and the link is emailed automatically. PayID from any Australian bank app and Bitcoin over Lightning also work, sent by hand within a couple of hours." } }
+  ]
+}
+</script>
+
+<!-- ============================================================
+     BEFORE GOING LIVE — replace every  FILL:  in this file.
+     Payment settings live in script.js (edit these):
+       CONTACT          · order / support email (already set to admin@ubghyper.xyz)
+       PLANS[*].stripe  · a Stripe Payment Link per plan (currently TEST-mode links)
+       PLANS[*].price   · the dollar amounts (drive the whole checkout)
+     Inline in the page:
+       FILL:PAYID · your PayID (phone/email on the adult's bank)
+       (Bitcoin Lightning address is already set in the Crypto panel.)
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="logo"><svg class="logo-mark" viewBox="0 0 512 512" width="19" height="19" aria-hidden="true"><rect x="112" y="112" width="288" height="288" rx="78" fill="none" stroke="currentColor" stroke-width="42"/><rect x="206" y="206" width="100" height="100" rx="30" fill="currentColor"/></svg> Hyper<b>Tunnel</b></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#why">Why</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#checkout">Buy</a>
+      <a href="#setup">Setup</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <a href="#pricing" class="btn btn-sm">Get access</a>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M3 12h2M19 12h2M5.6 18.4l1.4-1.4M17 7l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-hamburger" id="hamburger" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" width="16" height="16"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="kicker hero-kicker rise d1"><span class="dot"></span> Sydney node · online</span>
+          <h1 class="rise d2">A VPN that actually <em>works on school WiFi</em>.</h1>
+          <p class="hero-sub rise d3">Most VPNs announce themselves and get blocked at school within minutes. HyperTunnel hides your traffic inside normal HTTPS, so the WiFi filter sees ordinary browsing and lets it through. Servers are in Australia.</p>
+          <div class="hero-cta rise d4">
+            <a href="#pricing" class="btn">See plans</a>
+            <a href="#why" class="tlink">How it works <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="spec rise d5">
+            <span><b>Stealth (Reality)</b></span>
+            <span>Sydney servers</span>
+            <span>Every device</span>
+            <span>2-min setup</span>
+          </div>
+        </div>
+        <div class="hero-card rise d4" aria-hidden="true">
+          <div class="hc-tunnel"><i></i><i></i><i></i></div>
+          <div class="hc">
+            <div class="hc-bar"><i></i><i></i><i></i><span>hypertunnel · session</span></div>
+            <div class="hc-body">
+              <div class="hc-status"><span class="hc-live"></span> Tunnel active <span class="loc">up 12:04</span></div>
+              <div class="hc-rows">
+                <div class="r"><span class="k">location</span><span class="v">sydney · au</span></div>
+                <div class="r"><span class="k">protocol</span><span class="v">reality · tls 1.3</span></div>
+                <div class="r"><span class="k">appears as</span><span class="v">google.com</span></div>
+                <div class="r"><span class="k">latency</span><span class="v"><b>12</b> ms</span></div>
+                <div class="r"><span class="k">data</span><span class="v">unlimited</span></div>
+              </div>
+              <div class="hc-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> tls 1.3 · encrypted to our server</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="wrap">
+      <div class="trust-in">
+        <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg> <b>From the UBGHyper team</b></span>
+        <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg> Australian servers</span>
+        <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.4 5.2A9.7 9.7 0 0 1 12 5c5 0 9 5 9 7a12 12 0 0 1-2 2.8M6.6 6.6C4 8 2 11 3 12c0 0 1.5 2.5 4 4"/></svg> We don't sell your data</span>
+        <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/></svg> 3-day money-back</span>
+        <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg> Real human support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="sec" id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker"><span class="i">01</span> &nbsp;/&nbsp;Why it works</span>
+        <h2>It gets through because there's nothing to block.</h2>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <div class="rn">01</div>
+          <h3>Invisible on the network</h3>
+          <p>Your connection looks like ordinary HTTPS traffic to a big-name site. The school filter sees normal browsing, not a VPN, so it doesn't trip the usual blocks. That's why it gets through where Nord, Proton and the free VPNs don't.</p>
+        </div>
+        <div class="row">
+          <div class="rn">02</div>
+          <h3>Fast enough to actually use</h3>
+          <p>Servers sit in Sydney, so latency stays low and video keeps playing. It's not a crawling connection you fight with. Most of the time you forget it's on.</p>
+        </div>
+        <div class="row">
+          <div class="rn">03</div>
+          <h3>One link, every device</h3>
+          <p>Works on iPhone, iPad, Android, Windows and Mac. No browser extension to get flagged, no account to make, no fiddly setup. You paste one link and connect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="sec" id="pricing">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker"><span class="i">02</span> &nbsp;/&nbsp;Pricing</span>
+        <h2>One price, everything included.</h2>
+        <p>Every plan: all servers, all devices, unlimited data. Pay by card, PayID or crypto.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-top"><span class="plan-name">Monthly</span></div>
+          <div class="plan-price"><span class="amt">$5</span><span class="per">/ month</span></div>
+          <div class="plan-note">Month to month.</div>
+          <ul>
+            <li>Unlimited data &amp; speed</li>
+            <li>All servers &amp; devices</li>
+            <li>Cancel anytime</li>
+          </ul>
+          <a href="#checkout" class="btn btn-line btn-block" data-plan-key="monthly">Choose monthly</a>
+        </div>
+        <div class="plan feat">
+          <div class="plan-top"><span class="plan-name">Term pass</span><span class="plan-pop">Popular</span></div>
+          <div class="plan-price"><span class="amt">$12</span><span class="per">/ term</span></div>
+          <div class="plan-note">≈ one school term · <span class="save">save 20%</span></div>
+          <ul>
+            <li>Everything in Monthly</li>
+            <li>Set &amp; forget for the term</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#checkout" class="btn btn-block" data-plan-key="term">Get the term pass</a>
+        </div>
+        <div class="plan">
+          <div class="plan-top"><span class="plan-name">School year</span></div>
+          <div class="plan-price"><span class="amt">$30</span><span class="per">/ year</span></div>
+          <div class="plan-note"><span class="save">save 50%</span> · best value</div>
+          <ul>
+            <li>Everything in Term pass</li>
+            <li>Locked-in lowest price</li>
+            <li>Covered all year</li>
+          </ul>
+          <a href="#checkout" class="btn btn-line btn-block" data-plan-key="year">Go yearly</a>
+        </div>
+      </div>
+      <div class="pricing-note">
+        <span><b>Refer a mate →</b> free month</span>
+        <span><b>First 3 days →</b> refund if it's not for you</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section class="sec" id="checkout">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker"><span class="i">03</span> &nbsp;/&nbsp;Checkout</span>
+        <h2>Pay how you like.</h2>
+        <p>Pick a plan and pay by card. Your link is emailed the moment you pay. Prefer PayID or Bitcoin? Those are sent by hand, usually within a couple of hours. 3-day money-back either way.</p>
+      </div>
+
+      <div class="pay">
+        <!-- STEP 1 — plan -->
+        <div class="pay-step">
+          <div class="pay-step-h"><span class="pay-num">1</span> Choose your plan</div>
+          <div class="pay-plans" id="payPlans" role="radiogroup" aria-label="Choose a plan">
+            <button class="pay-plan" data-plan-key="monthly" role="radio" aria-checked="false">
+              <span class="pp-check" aria-hidden="true"></span>
+              <span class="pp-name">Monthly</span>
+              <span class="pp-price">$5<span class="pp-per">/mo</span></span>
+              <span class="pp-sub">Month to month</span>
+            </button>
+            <button class="pay-plan on" data-plan-key="term" role="radio" aria-checked="true">
+              <span class="pp-tag">Most popular</span>
+              <span class="pp-check" aria-hidden="true"></span>
+              <span class="pp-name">Term pass</span>
+              <span class="pp-price">$12<span class="pp-per">/term</span></span>
+              <span class="pp-sub">Save 20% · ~10 weeks</span>
+            </button>
+            <button class="pay-plan" data-plan-key="year" role="radio" aria-checked="false">
+              <span class="pp-tag alt">Best value</span>
+              <span class="pp-check" aria-hidden="true"></span>
+              <span class="pp-name">School year</span>
+              <span class="pp-price">$30<span class="pp-per">/yr</span></span>
+              <span class="pp-sub">Save 50%</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2 — pay -->
+        <div class="pay-step">
+          <div class="pay-step-h"><span class="pay-num">2</span> Pay &amp; get your link</div>
+
+          <!-- Primary: card -->
+          <div class="pay-card">
+            <div class="pay-card-top">
+              <div class="pay-card-id">
+                <div class="pay-card-title">Pay by card <span class="pay-chip">Instant</span></div>
+                <div class="pay-card-sub">Visa · Mastercard · Apple &amp; Google&nbsp;Pay</div>
+              </div>
+              <div class="pay-total"><span class="pay-total-amt" id="payTotal">$12</span><span class="pay-total-per" id="payPer">/ term</span></div>
+            </div>
+            <a href="FILL:STRIPE" target="_blank" rel="noopener" class="btn btn-block pay-btn" id="stripe-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <span>Pay $<span class="ckamt">12</span> securely</span>
+            </a>
+            <div class="pay-trust">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Link emailed the instant you pay</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Stripe-secured, we never see your card</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/></svg> 3-day money-back</span>
+            </div>
+            <p class="pay-fine">Billed as HYPERTUNNEL. No account to create, just your email at checkout. The link comes by email, so check your spam folder if it's not in your inbox.</p>
+          </div>
+
+          <!-- Secondary: other ways -->
+          <div class="pay-alt">
+            <div class="pay-alt-head">Or pay another way</div>
+            <div class="pay-alt-tabs" role="tablist">
+              <button class="pay-alt-tab" data-pane="payid" role="tab" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6M5 10v9M19 10v9M9 10v9M15 10v9M3 19h18"/></svg>
+                PayID <span class="pay-alt-note">AU · free</span>
+              </button>
+              <button class="pay-alt-tab" data-pane="crypto" role="tab" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 8H14a2 2 0 0 1 0 4H9.5m0 0H14a2 2 0 0 1 0 4H9.5m1.5-10v2m0 8v2"/></svg>
+                Bitcoin <span class="pay-alt-note">Lightning</span>
+              </button>
+            </div>
+
+            <!-- PayID (manual) -->
+            <div class="pay-alt-body" id="pane-payid" hidden>
+              <p class="co-desc">In your bank app: <b>Pay Someone → PayID</b> and send <b>$<span class="ckamt">12</span></b> to:</p>
+              <div class="field"><span class="fl">PayID</span><span class="fv" id="v-payid">FILL:PAYID</span><button class="copy" data-copy="v-payid">Copy</button></div>
+              <ol class="co-steps">
+                <li>Send exactly <b>$<span class="ckamt">12</span></b>.</li>
+                <li>Put <b>your email</b> in the payment description.</li>
+                <li>Hit <b>I've paid</b> and send us the reference.</li>
+              </ol>
+              <div class="co-cta"><a href="#" class="btn btn-line" id="cta-payid">I've paid, send my link</a></div>
+              <p class="co-fine">Australian bank apps only. PayID transfers can't be reversed, so double-check the amount. Manual method: we send the link by hand, usually within a couple of hours. Check your spam folder for it.</p>
+            </div>
+
+            <!-- Bitcoin / Lightning (manual) -->
+            <div class="pay-alt-body" id="pane-crypto" hidden>
+              <p class="co-desc">Send <b>$<span class="ckamt">12</span></b> worth of Bitcoin over the <b>Lightning Network</b> to this address, then tap “I've paid”:</p>
+              <div class="field"><span class="fl">BTC · Lightning</span><span class="fv" id="v-btc">duebuddy247@walletofsatoshi.com</span><button class="copy" data-copy="v-btc">Copy</button></div>
+              <div class="co-cta"><a href="#" class="btn btn-line" id="cta-crypto">I've paid, send my link</a></div>
+              <p class="co-fine">This is a Lightning address (Wallet of Satoshi). Pay from any Lightning wallet and include your email with the payment. Manual method: we send the link by hand, usually within a couple of hours. Check your spam folder for it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SETUP -->
+  <section class="sec" id="setup">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker"><span class="i">04</span> &nbsp;/&nbsp;Setup</span>
+        <h2>From paid to connected in about two minutes.</h2>
+        <p>No tech skills needed. You get one link, paste it into a free app, and hit connect.</p>
+      </div>
+      <div class="setup-grid">
+        <div class="su"><div class="sn">01</div><h4>Pay &amp; message</h4><p>Pick a plan, pay, and send your email. We reply with your personal link.</p></div>
+        <div class="su"><div class="sn">02</div><h4>Get the app</h4><p>Install the free Hiddify app on your phone or laptop. About 30 seconds.</p></div>
+        <div class="su"><div class="sn">03</div><h4>Paste the link</h4><p>Add your link in the app. It sets everything up on its own.</p></div>
+        <div class="su"><div class="sn">04</div><h4>Connect</h4><p>Tap once. You're through, at school, on data, anywhere.</p></div>
+      </div>
+      <div class="setup-cta">
+        <a href="setup.html" class="btn btn-line">Full setup guide</a>
+        <a href="test.html" class="tlink">Check if you're protected <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker"><span class="i">05</span> &nbsp;/&nbsp;FAQ</span>
+        <h2>Straight answers.</h2>
+      </div>
+      <div class="faq">
+        <details class="qa"><summary><span class="qn">Q</span> Does it work on school WiFi? <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Yes, that's what it's built for. Your traffic looks like normal encrypted browsing, so filters that block regular VPNs usually don't detect it. It's been tested on Australian school networks.</div></details>
+        <details class="qa"><summary><span class="qn">Q</span> What devices does it work on? <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">iPhone, iPad, Android, Windows and Mac. It runs best on your own phone or a personal laptop. Heavily locked-down school Chromebooks that block installs can't run any VPN at all, so that's a device limit, not ours.</div></details>
+        <details class="qa"><summary><span class="qn">Q</span> Where are the servers? <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">All of them are in Australia, in Sydney right now. That keeps latency low if you're in AU, and it's why your connection shows up as an Australian IP once you're on.</div></details>
+        <details class="qa"><summary><span class="qn">Q</span> Will I get caught? <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Your connection is encrypted and looks like ordinary HTTPS, so there's nothing obvious to flag. Using a VPN can still break your school's acceptable-use policy, though. That's between you and your school, so use it responsibly.</div></details>
+        <details class="qa"><summary><span class="qn">Q</span> I paid but no email came. <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Check your spam or junk folder first, the link email lands there sometimes. Still nothing after a bit? Message us with the email you ordered under and we'll resend it.</div></details>
+        <details class="qa"><summary><span class="qn">Q</span> My antivirus blocks it. <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Antivirus with HTTPS or web scanning (Bitdefender, Kaspersky, ESET, Avast) can get in the way of the tunnel. Turn off <code>Encrypted / SSL web scan</code>, or add the app to its exceptions. Message us if you want a hand.</div></details>
+        <details class="qa"><summary><span class="qn">Q</span> No card. How do I pay? <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Card is fastest, the link is emailed automatically the moment you pay. No card? PayID from any Australian bank app and Bitcoin over Lightning both work too, and we send those by hand within a couple of hours.</div></details>
+        <details class="qa"><summary><span class="qn">Q</span> What if a server gets blocked? <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Message us and we'll rotate servers and send a fresh link, usually the same day. Your subscription keeps running, so there's nothing to re-buy.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="wrap">
+      <h2>Stop looking at the blocked page.</h2>
+      <p>Actually use the internet you're already on at school.</p>
+      <a href="#pricing" class="btn">Get HyperTunnel</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span class="logo"><svg class="logo-mark" viewBox="0 0 512 512" width="19" height="19" aria-hidden="true"><rect x="112" y="112" width="288" height="288" rx="78" fill="none" stroke="currentColor" stroke-width="42"/><rect x="206" y="206" width="100" height="100" rx="30" fill="currentColor"/></svg> Hyper<b>Tunnel</b></span>
+    <div class="foot-links">
+      <a href="#pricing">Pricing</a>
+      <a href="#checkout">Buy</a>
+      <a href="setup.html">Setup guide</a>
+      <a href="test.html">Connection test</a>
+      <a href="#faq">FAQ</a>
+      <a href="#" id="foot-support">Support</a>
+    </div>
+  </div>
+  <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Questions or refunds? Message support any time. Part of the UBGHyper family.</p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

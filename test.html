@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HyperTunnel Connection Check</title>
+<meta name="theme-color" content="#f07220">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{--bg:#101010;--surface:#171717;--surface-2:#1f1f1f;--border:#282828;--line:#202020;--text:#ededed;--muted:#7a7a7a;--faint:#4a4a4a;--accent:#f07220;--accent-soft:rgba(240,114,32,.09);--good:#4bbe86;--bad:#e85252;--font:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--r:8px;--r-lg:12px}
+:root[data-theme="light"]{--bg:#fbfbfa;--surface:#fff;--surface-2:#f4f3f1;--border:#e6e4e1;--line:#ecebe8;--text:#16130f;--muted:#78736c;--faint:#b8b4ad;--accent-soft:rgba(240,114,32,.07)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;padding:2rem 1.25rem}
+.mono{font-family:var(--mono)}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1rem;letter-spacing:-.02em;margin-bottom:2rem}
+.brand b{color:var(--accent)}
+.brand svg{width:20px;height:20px;color:var(--accent)}
+.card{width:100%;max-width:560px}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:1.6rem}
+/* verdict */
+.verdict{border:1px solid var(--border);border-radius:var(--r-lg);padding:1.6rem;background:var(--surface);display:flex;gap:1.1rem;align-items:center;transition:border-color .3s}
+.verdict.ok{border-color:color-mix(in srgb,var(--good) 55%,var(--border))}
+.verdict.bad{border-color:color-mix(in srgb,var(--bad) 55%,var(--border))}
+.v-ico{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:var(--surface-2)}
+.v-ico svg{width:26px;height:26px}
+.verdict.ok .v-ico{background:color-mix(in srgb,var(--good) 15%,transparent);color:var(--good)}
+.verdict.bad .v-ico{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.verdict.checking .v-ico{color:var(--muted)}
+.v-title{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+.v-sub{color:var(--muted);font-size:.9rem;margin-top:.2rem}
+.spin{width:22px;height:22px;border:2.5px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* details */
+.rows{border:1px solid var(--border);border-radius:var(--r-lg);margin-top:1rem;overflow:hidden}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 1.1rem;border-bottom:1px solid var(--line);font-size:.86rem}
+.row:last-child{border-bottom:none}
+.row .k{color:var(--muted);font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em}
+.row .val{font-family:var(--mono);text-align:right;word-break:break-all}
+.row .val.hit{color:var(--good)}
+/* reachability */
+.reach-h{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:1.6rem 0 .8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.5rem}
+.site{display:flex;align-items:center;gap:.55rem;border:1px solid var(--border);border-radius:var(--r);padding:.55rem .7rem;font-size:.82rem;background:var(--surface)}
+.site .dot{width:8px;height:8px;border-radius:50%;background:var(--faint);flex-shrink:0}
+.site.ok .dot{background:var(--good)}
+.site.bad .dot{background:var(--bad)}
+.site.ok{color:var(--text)}.site.bad{color:var(--muted)}
+.actions{margin-top:1.6rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;background:var(--accent);color:#fff;border:none;border-radius:var(--r);font:inherit;font-weight:600;font-size:.85rem;cursor:pointer}
+.btn:hover{background:color-mix(in srgb,var(--accent) 88%,#fff)}
+.hint{color:var(--muted);font-size:.8rem;font-family:var(--mono)}
+a{color:var(--accent)}
+.backlinks{margin-top:1.8rem;text-align:center;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.backlinks a{color:var(--muted)}
+.backlinks a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+  <div class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg> Hyper<b>Tunnel</b></div>
+  <div class="card">
+    <div class="kicker">Connection check</div>
+    <h1>Are you protected?</h1>
+
+    <div class="verdict checking" id="verdict">
+      <div class="v-ico" id="vico"><div class="spin"></div></div>
+      <div><div class="v-title" id="vtitle">Checking…</div><div class="v-sub" id="vsub">Looking up where your traffic is coming from.</div></div>
+    </div>
+
+    <div class="rows" id="rows" hidden>
+      <div class="row"><span class="k">Your IP</span><span class="val" id="r-ip">—</span></div>
+      <div class="row"><span class="k">Location</span><span class="val" id="r-loc">—</span></div>
+      <div class="row"><span class="k">Network</span><span class="val" id="r-isp">—</span></div>
+    </div>
+
+    <div class="reach-h">Sample sites schools often block</div>
+    <div class="grid" id="grid"></div>
+
+    <div class="actions">
+      <button class="btn" id="rerun">Run again</button>
+      <span class="hint" id="reachcount">testing…</span>
+    </div>
+
+    <div class="backlinks"><a href="index.html">Home</a> · <a href="setup.html">Setup guide</a></div>
+  </div>
+
+<script>
+(function(){
+  try{var t=localStorage.getItem('ht_theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}
+
+  // Only DigitalOcean (or the exact server IP) proves the tunnel — NOT the city,
+  // which reads "Sydney" for any eastern-Australian connection even when untunnelled.
+  var EXPECTED = { ip: '209.38.91.204', org: /digital\s?ocean/i };
+
+  // A representative sample — not exhaustive. A single red dot doesn't mean you're
+  // unprotected; the IP verdict above is the real signal.
+  var SITES = ['youtube.com','discord.com','instagram.com','tiktok.com','reddit.com','roblox.com','twitch.tv','spotify.com','snapchat.com'];
+
+  var $ = function(id){ return document.getElementById(id); };
+
+  function setVerdict(state, title, sub){
+    var v = $('verdict'); v.className = 'verdict ' + state;
+    var ico = $('vico');
+    if(state==='ok') ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+    else if(state==='bad') ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+    else ico.innerHTML = '<div class="spin"></div>';
+    $('vtitle').textContent = title; $('vsub').textContent = sub;
+  }
+
+  function checkIP(){
+    setVerdict('checking','Checking…','Looking up where your traffic is coming from.');
+    $('rows').hidden = true;
+    fetch('https://ipwho.is/?fields=ip,city,region,country,connection', {cache:'no-store'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(!d || d.success===false) throw new Error('lookup failed');
+        var isp = (d.connection && (d.connection.isp || d.connection.org)) || 'Unknown';
+        $('r-ip').textContent = d.ip || '—';
+        $('r-loc').textContent = [d.city, d.country].filter(Boolean).join(', ') || '—';
+        $('r-isp').textContent = isp;
+        $('rows').hidden = false;
+        var tunnelled = EXPECTED.org.test(isp) || d.ip===EXPECTED.ip;
+        if(tunnelled){
+          $('r-isp').classList.add('hit'); $('r-loc').classList.add('hit');
+          setVerdict('ok','You’re protected ✅','Your traffic is exiting through HyperTunnel (' + isp + '). Your real IP and location are hidden.');
+        } else {
+          setVerdict('bad','Not tunnelled yet','You’re on your real connection: ' + isp + (d.city?(', '+d.city):'') + '. Open Hiddify, hit connect, then Run again.');
+        }
+      })
+      .catch(function(){
+        setVerdict('bad','Couldn’t check','Couldn’t reach the lookup service. If you’re on a blocked network and NOT connected, that itself means you’re not tunnelled yet.');
+      });
+  }
+
+  // Reachability probe. A no-cors fetch resolves (opaque) as soon as the host is
+  // reachable — even on a 404 — and only rejects on a real network/DNS block or
+  // timeout. That's a far more reliable "can I reach this host" signal than the old
+  // <img> favicon trick, which false-flagged any site without a hotlinkable favicon.
+  function probe(site){
+    return new Promise(function(res){
+      var done=false;
+      var ctrl = ('AbortController' in window) ? new AbortController() : null;
+      var t = setTimeout(function(){ if(!done){done=true; if(ctrl) ctrl.abort(); res(false);} }, 6000);
+      fetch('https://'+site+'/favicon.ico?_='+Date.now(), { mode:'no-cors', cache:'no-store', signal: ctrl ? ctrl.signal : undefined })
+        .then(function(){ if(!done){done=true; clearTimeout(t); res(true);} })
+        .catch(function(){ if(!done){done=true; clearTimeout(t); res(false);} });
+    });
+  }
+
+  function checkReach(){
+    var grid=$('grid'); grid.innerHTML=''; var done=0, ok=0;
+    SITES.forEach(function(s){
+      var el=document.createElement('div'); el.className='site'; el.innerHTML='<span class="dot"></span>'+s;
+      grid.appendChild(el);
+      probe(s).then(function(good){
+        done++; if(good){ok++;el.classList.add('ok');} else el.classList.add('bad');
+        $('reachcount').textContent = ok+'/'+SITES.length+' reachable';
+      });
+    });
+  }
+
+  function run(){ checkIP(); checkReach(); }
+  $('rerun').addEventListener('click', run);
+  run();
+})();
+</script>
+</body>
+</html>
