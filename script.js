@@ -30,9 +30,9 @@
   var CONTACT = 'admin@ubghyper.xyz';          // order / support email
   var PLANS = {
     // ⚠ Stripe TEST-mode links — swap for your live buy.stripe.com/... links before launch.
-    monthly: { name: 'Monthly',     price: 5,  per: 'month', stripe: 'https://buy.stripe.com/test_7sYeV6gase2l8vM3X97EQ02' },
-    term:    { name: 'Term pass',   price: 12, per: 'term',  stripe: 'https://buy.stripe.com/test_8x26oA6zS2jD4fwbpB7EQ01' },
-    year:    { name: 'School year', price: 30, per: 'year',  stripe: 'https://buy.stripe.com/test_cNi4gs8I0f6p27octF7EQ00' }
+    monthly: { name: 'Monthly',     price: 5,  per: 'month', stripe: 'https://buy.stripe.com/bJe9AV1Nxb8y1qL4c88N201' },
+    term:    { name: 'Term pass',   price: 12, per: 'term',  stripe: 'https://buy.stripe.com/8x2fZjcsb3G6glF8so8N202' },
+    year:    { name: 'School year', price: 30, per: 'year',  stripe: 'https://buy.stripe.com/6oUcN7dwf4KaedxbEA8N200' }
   };
   /* ------------------------------------------------------------------- */
 
