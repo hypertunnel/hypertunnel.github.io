@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>HyperTunnel: a VPN that works on school WiFi</title>
 <meta name="description" content="HyperTunnel is a private VPN with Australian servers that gets past school WiFi filters, the ones that block Nord, Proton and the free VPNs. Works on iPhone, Android, Windows and Mac. Setup takes about two minutes.">
@@ -71,6 +71,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
 <link rel="stylesheet" href="styles.css">
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0D77H5BBD6"></script>
+<script src="analytics.js" defer></script>
 </head>
 <body>
 
@@ -399,7 +403,7 @@
       <a href="#" id="foot-support">Support</a>
     </div>
   </div>
-  <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Questions or refunds? Message support any time. Part of the UBGHyper family.</p>
+  <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Questions or refunds? Message support any time, or add <b>fibble__</b> on Discord. Part of the UBGHyper family.</p>
 </footer>
 
 <script src="script.js" defer></script>

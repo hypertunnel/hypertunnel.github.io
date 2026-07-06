@@ -61,6 +61,18 @@
   document.querySelectorAll('[data-plan-key]').forEach(function(b){ b.addEventListener('click', function(){ setPlan(b.dataset.planKey); }); });
   setPlan('term');
 
+  // GA4 funnel event — fires when someone starts paying ("almost bought").
+  // No-op if analytics is blocked or hasn't loaded.
+  function track(name, extra){
+    if (!window.gtag) return;
+    var p = PLANS[sel] || {};
+    var d = { currency: 'AUD', value: p.price, items: [{ item_name: 'HyperTunnel ' + (p.name || '') }] };
+    if (extra) for (var k in extra) d[k] = extra[k];
+    gtag('event', name, d);
+  }
+  var sbtn = document.getElementById('stripe-btn');
+  if (sbtn) sbtn.addEventListener('click', function(){ track('begin_checkout', { payment_type: 'card' }); });
+
   var fsup = document.getElementById('foot-support'); if (fsup) fsup.href = 'mailto:' + CONTACT;
 
   function mail(m){
@@ -69,7 +81,7 @@
       + '&body=' + encodeURIComponent('Plan: ' + p.name + ' ($' + p.price + ')\nPaid via: ' + m + '\nMy email for the link: \nPayment reference / screenshot: ');
   }
   ['payid','crypto'].forEach(function(m){
-    var el = document.getElementById('cta-' + m); if (el) el.addEventListener('click', function(e){ e.preventDefault(); window.location.href = mail(m); });
+    var el = document.getElementById('cta-' + m); if (el) el.addEventListener('click', function(e){ e.preventDefault(); track('begin_checkout', { payment_type: m }); window.location.href = mail(m); });
   });
   if ('IntersectionObserver' in window) {
     var els = document.querySelectorAll('.sec, .closing');
