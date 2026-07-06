@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>HyperTunnel Setup Guide</title>
 <meta name="description" content="Get connected to HyperTunnel in about two minutes. Step-by-step setup for iPhone, Android, Windows and Mac, plus troubleshooting.">
 <meta name="theme-color" content="#f07220">
@@ -14,8 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
 <style>
 :root {
@@ -310,32 +311,12 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 2.5rem; margin-top
       <a href="setup.html">Setup</a>
       <a href="test.html">Connection test</a>
       <a href="index.html#faq">FAQ</a>
+      <a href="legal.html">Privacy &amp; Terms</a>
       <a href="#" id="foot-support">Support</a>
     </div>
   </div>
 </footer>
 
-<script>
-(function(){
-  var root = document.documentElement;
-  try { var s = localStorage.getItem('ht_theme'); if (s) root.setAttribute('data-theme', s); } catch(e){}
-  document.getElementById('themeToggle').addEventListener('click', function(){
-    var n = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    root.setAttribute('data-theme', n); try { localStorage.setItem('ht_theme', n); } catch(e){}
-  });
-  // platform tabs
-  document.querySelectorAll('.tab').forEach(function(b){
-    b.addEventListener('click', function(){
-      document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('on'); });
-      document.querySelectorAll('.pane').forEach(function(x){ x.classList.remove('on'); });
-      b.classList.add('on'); document.getElementById('pane-' + b.dataset.pane).classList.add('on');
-    });
-  });
-  var CONTACT = 'admin@ubghyper.xyz';  // support email
-  var help = 'mailto:' + CONTACT + '?subject=' + encodeURIComponent('HyperTunnel setup help');
-  var hb = document.getElementById('help-btn'); if (hb) hb.href = help;
-  var fs = document.getElementById('foot-support'); if (fs) fs.href = 'mailto:' + CONTACT;
-})();
-</script>
+<script src="setup.js" defer></script>
 </body>
 </html>

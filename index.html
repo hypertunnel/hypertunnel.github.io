@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>HyperTunnel: a VPN that works on school WiFi</title>
 <meta name="description" content="HyperTunnel is a private VPN with Australian servers that gets past school WiFi filters, the ones that block Nord, Proton and the free VPNs. Works on iPhone, Android, Windows and Mac. Setup takes about two minutes.">
 <meta name="keywords" content="vpn for school wifi, vpn that works on school wifi, unblock school wifi, school vpn, vpn for chromebook school, get past school filter">
@@ -66,13 +68,16 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<div class="devbar" id="devbar">
+  <span><b>Early access.</b> HyperTunnel is live and still being fine-tuned. If it doesn't get through on your network, you're covered by the 3-day money-back.</span>
+  <button class="devbar-x" id="devbarX" type="button" aria-label="Dismiss notice">&times;</button>
+</div>
 
 <nav>
   <div class="nav-in">
@@ -103,7 +108,7 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="kicker hero-kicker rise d1"><span class="dot"></span> Sydney node · online</span>
+          <span class="kicker hero-kicker rise d1">From the UBGHyper team</span>
           <h1 class="rise d2">A VPN that actually <em>works on school WiFi</em>.</h1>
           <p class="hero-sub rise d3">Most VPNs announce themselves and get blocked at school within minutes. HyperTunnel hides your traffic inside normal HTTPS, so the WiFi filter sees ordinary browsing and lets it through. Servers are in Australia.</p>
           <div class="hero-cta rise d4">
@@ -122,7 +127,7 @@
           <div class="hc">
             <div class="hc-bar"><i></i><i></i><i></i><span>hypertunnel · session</span></div>
             <div class="hc-body">
-              <div class="hc-status"><span class="hc-live"></span> Tunnel active <span class="loc">up 12:04</span></div>
+              <div class="hc-status"><span class="hc-live"></span> Tunnel active</div>
               <div class="hc-rows">
                 <div class="r"><span class="k">location</span><span class="v">sydney · au</span></div>
                 <div class="r"><span class="k">protocol</span><span class="v">reality · tls 1.3</span></div>
@@ -155,7 +160,7 @@
   <section class="sec" id="why">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker"><span class="i">01</span> &nbsp;/&nbsp;Why it works</span>
+        <span class="kicker">Why it works</span>
         <h2>It gets through because there's nothing to block.</h2>
       </div>
       <div class="rows">
@@ -182,7 +187,7 @@
   <section class="sec" id="pricing">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker"><span class="i">02</span> &nbsp;/&nbsp;Pricing</span>
+        <span class="kicker">Pricing</span>
         <h2>One price, everything included.</h2>
         <p>Every plan: all servers, all devices, unlimited data. Pay by card, PayID or crypto.</p>
       </div>
@@ -222,7 +227,6 @@
         </div>
       </div>
       <div class="pricing-note">
-        <span><b>Refer a mate →</b> free month</span>
         <span><b>First 3 days →</b> refund if it's not for you</span>
       </div>
     </div>
@@ -232,7 +236,7 @@
   <section class="sec" id="checkout">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker"><span class="i">03</span> &nbsp;/&nbsp;Checkout</span>
+        <span class="kicker">Checkout</span>
         <h2>Pay how you like.</h2>
         <p>Pick a plan and pay by card. Your link is emailed the moment you pay. Prefer PayID or Bitcoin? Those are sent by hand, usually within a couple of hours. 3-day money-back either way.</p>
       </div>
@@ -334,7 +338,7 @@
   <section class="sec" id="setup">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker"><span class="i">04</span> &nbsp;/&nbsp;Setup</span>
+        <span class="kicker">Setup</span>
         <h2>From paid to connected in about two minutes.</h2>
         <p>No tech skills needed. You get one link, paste it into a free app, and hit connect.</p>
       </div>
@@ -355,7 +359,7 @@
   <section class="sec" id="faq">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker"><span class="i">05</span> &nbsp;/&nbsp;FAQ</span>
+        <span class="kicker">FAQ</span>
         <h2>Straight answers.</h2>
       </div>
       <div class="faq">
@@ -391,6 +395,7 @@
       <a href="setup.html">Setup guide</a>
       <a href="test.html">Connection test</a>
       <a href="#faq">FAQ</a>
+      <a href="legal.html">Privacy &amp; Terms</a>
       <a href="#" id="foot-support">Support</a>
     </div>
   </div>

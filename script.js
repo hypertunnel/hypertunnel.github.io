@@ -8,6 +8,15 @@
   var nl = document.getElementById('navLinks');
   document.getElementById('hamburger').addEventListener('click', function(){ nl.classList.toggle('open'); });
   nl.addEventListener('click', function(e){ if (e.target.tagName === 'A') nl.classList.remove('open'); });
+  // early-access banner — dismissible, remembers the choice
+  var devbar = document.getElementById('devbar');
+  if (devbar) {
+    try { if (localStorage.getItem('ht_devbar_dismissed')) devbar.hidden = true; } catch(e){}
+    var devbarX = document.getElementById('devbarX');
+    if (devbarX) devbarX.addEventListener('click', function(){
+      devbar.hidden = true; try { localStorage.setItem('ht_devbar_dismissed', '1'); } catch(e){}
+    });
+  }
   // secondary payment methods — accordion (click to open, click again to close)
   document.querySelectorAll('.pay-alt-tab').forEach(function(b){
     b.addEventListener('click', function(){

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# setup.html and test.html are marked noindex in their own <head> (kept crawlable
+# on purpose so crawlers can see the noindex and drop them).
+
+Sitemap: https://hypertunnel.github.io/sitemap.xml
