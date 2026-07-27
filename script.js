@@ -38,10 +38,14 @@
   /* ---------- PAYMENT CONFIG — edit these before going live ---------- */
   var CONTACT = 'admin@ubghyper.xyz';          // order / support email
   var PLANS = {
-    // ⚠ Stripe TEST-mode links — swap for your live buy.stripe.com/... links before launch.
-    monthly: { name: 'Monthly',     price: 5,  per: 'month', stripe: 'https://buy.stripe.com/bJe9AV1Nxb8y1qL4c88N201' },
-    term:    { name: 'Term pass',   price: 12, per: 'term',  stripe: 'https://buy.stripe.com/8x2fZjcsb3G6glF8so8N202' },
-    year:    { name: 'School year', price: 30, per: 'year',  stripe: 'https://buy.stripe.com/6oUcN7dwf4KaedxbEA8N200' }
+    // LIVE Stripe Payment Links (created 2026-07-28, one-time, AUD).
+    // `price` must match the amount on the linked Stripe product, and the amount in cents
+    // must exist in PLAN_DAYS in automation/worker.js — otherwise the buyer silently gets
+    // the 30-day fallback instead of the plan they paid for.
+    // `was` is the pre-sale price, shown struck through on the plan cards.
+    monthly: { name: 'Monthly',     price: 2,  was: 5,  per: 'month', stripe: 'https://buy.stripe.com/8x5kF77R90q3yTfUQ8N203' },
+    term:    { name: 'Term pass',   price: 6,  was: 12, per: 'term',  stripe: 'https://buy.stripe.com/28E00ldwf1xY3yT0ZW8N204' },
+    year:    { name: 'School year', price: 17, was: 30, per: 'year',  stripe: 'https://buy.stripe.com/dRm28tcsb1xY3yT9ws8N205' }
   };
   /* ------------------------------------------------------------------- */
 
@@ -52,6 +56,8 @@
     document.querySelectorAll('.ckamt').forEach(function(el){ el.textContent = p.price; });
     var pt = document.getElementById('payTotal'); if (pt) pt.textContent = '$' + p.price;
     var pp = document.getElementById('payPer'); if (pp) pp.textContent = '/ ' + p.per;
+    var pw = document.getElementById('payWas');
+    if (pw) { pw.textContent = p.was ? '$' + p.was : ''; pw.hidden = !p.was; }
     document.querySelectorAll('.pay-plan').forEach(function(b){
       var on = b.dataset.planKey === key;
       b.classList.toggle('on', on); b.setAttribute('aria-checked', on ? 'true' : 'false');

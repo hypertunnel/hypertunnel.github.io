@@ -194,23 +194,24 @@
         <span class="kicker">Pricing</span>
         <h2>One price, everything included.</h2>
         <p>Every plan: all servers, all devices, unlimited data. Pay by card, PayID or crypto.</p>
+        <div class="sale-strip"><span class="sale-dot" aria-hidden="true"></span><b>Launch sale</b> — up to 60% off. New lower prices, live now.</div>
       </div>
       <div class="plans">
         <div class="plan">
           <div class="plan-top"><span class="plan-name">Monthly</span></div>
-          <div class="plan-price"><span class="amt">$2</span><span class="per">/ month</span></div>
-          <div class="plan-note">Month to month.</div>
+          <div class="plan-price"><span class="was">$5</span><span class="amt">$2</span><span class="per">/ month</span></div>
+          <div class="plan-note"><span class="save">60% off</span> · month to month</div>
           <ul>
             <li>Unlimited data &amp; speed</li>
             <li>All servers &amp; devices</li>
-            <li>Cancel anytime</li>
+            <li>No lock-in</li>
           </ul>
           <a href="#checkout" class="btn btn-line btn-block" data-plan-key="monthly">Choose monthly</a>
         </div>
         <div class="plan feat">
           <div class="plan-top"><span class="plan-name">Term pass</span><span class="plan-pop">Popular</span></div>
-          <div class="plan-price"><span class="amt">$6</span><span class="per">/ term</span></div>
-          <div class="plan-note">≈ one school term · <span class="save">save 20%</span></div>
+          <div class="plan-price"><span class="was">$12</span><span class="amt">$6</span><span class="per">/ term</span></div>
+          <div class="plan-note"><span class="save">50% off</span> · ≈ one school term</div>
           <ul>
             <li>Everything in Monthly</li>
             <li>Set &amp; forget for the term</li>
@@ -220,8 +221,8 @@
         </div>
         <div class="plan">
           <div class="plan-top"><span class="plan-name">School year</span></div>
-          <div class="plan-price"><span class="amt">$17</span><span class="per">/ year</span></div>
-          <div class="plan-note"><span class="save">save 50%</span> · best value</div>
+          <div class="plan-price"><span class="was">$30</span><span class="amt">$17</span><span class="per">/ year</span></div>
+          <div class="plan-note"><span class="save">43% off</span> · best value</div>
           <ul>
             <li>Everything in Term pass</li>
             <li>Locked-in lowest price</li>
@@ -254,21 +255,21 @@
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">Monthly</span>
               <span class="pp-price">$2<span class="pp-per">/mo</span></span>
-              <span class="pp-sub">Month to month</span>
+              <span class="pp-sub">60% off · month to month</span>
             </button>
             <button class="pay-plan on" data-plan-key="term" role="radio" aria-checked="true">
               <span class="pp-tag">Most popular</span>
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">Term pass</span>
               <span class="pp-price">$6<span class="pp-per">/term</span></span>
-              <span class="pp-sub">Save 20% · ~10 weeks</span>
+              <span class="pp-sub">50% off · ~10 weeks</span>
             </button>
             <button class="pay-plan" data-plan-key="year" role="radio" aria-checked="false">
               <span class="pp-tag alt">Best value</span>
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">School year</span>
               <span class="pp-price">$17<span class="pp-per">/yr</span></span>
-              <span class="pp-sub">Save 50%</span>
+              <span class="pp-sub">43% off · best value</span>
             </button>
           </div>
         </div>
@@ -284,11 +285,11 @@
                 <div class="pay-card-title">Pay by card <span class="pay-chip">Instant</span></div>
                 <div class="pay-card-sub">Visa · Mastercard · Apple &amp; Google&nbsp;Pay</div>
               </div>
-              <div class="pay-total"><span class="pay-total-amt" id="payTotal">$12</span><span class="pay-total-per" id="payPer">/ term</span></div>
+              <div class="pay-total"><span class="pay-total-was" id="payWas">$12</span><span class="pay-total-amt" id="payTotal">$6</span><span class="pay-total-per" id="payPer">/ term</span></div>
             </div>
             <a href="FILL:STRIPE" target="_blank" rel="noopener" class="btn btn-block pay-btn" id="stripe-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-              <span>Pay $<span class="ckamt">12</span> securely</span>
+              <span>Pay $<span class="ckamt">6</span> securely</span>
             </a>
             <div class="pay-trust">
               <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Link emailed the instant you pay</span>
@@ -314,10 +315,10 @@
 
             <!-- PayID (manual) -->
             <div class="pay-alt-body" id="pane-payid" hidden>
-              <p class="co-desc">In your bank app: <b>Pay Someone → PayID</b> and send <b>$<span class="ckamt">12</span></b> to:</p>
+              <p class="co-desc">In your bank app: <b>Pay Someone → PayID</b> and send <b>$<span class="ckamt">6</span></b> to:</p>
               <div class="field"><span class="fl">PayID</span><span class="fv" id="v-payid">FILL:PAYID</span><button class="copy" data-copy="v-payid">Copy</button></div>
               <ol class="co-steps">
-                <li>Send exactly <b>$<span class="ckamt">12</span></b>.</li>
+                <li>Send exactly <b>$<span class="ckamt">6</span></b>.</li>
                 <li>Put <b>your email</b> in the payment description.</li>
                 <li>Hit <b>I've paid</b> and send us the reference.</li>
               </ol>
@@ -327,7 +328,7 @@
 
             <!-- Bitcoin / Lightning (manual) -->
             <div class="pay-alt-body" id="pane-crypto" hidden>
-              <p class="co-desc">Send <b>$<span class="ckamt">12</span></b> worth of Bitcoin over the <b>Lightning Network</b> to this address, then tap “I've paid”:</p>
+              <p class="co-desc">Send <b>$<span class="ckamt">6</span></b> worth of Bitcoin over the <b>Lightning Network</b> to this address, then tap “I've paid”:</p>
               <div class="field"><span class="fl">BTC · Lightning</span><span class="fv" id="v-btc">duebuddy247@walletofsatoshi.com</span><button class="copy" data-copy="v-btc">Copy</button></div>
               <div class="co-cta"><a href="#" class="btn btn-line" id="cta-crypto">I've paid, send my link</a></div>
               <p class="co-fine">This is a Lightning address (Wallet of Satoshi). Pay from any Lightning wallet and include your email with the payment. Manual method: we send the link by hand, usually within a couple of hours. Check your spam folder for it.</p>

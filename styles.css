@@ -187,6 +187,8 @@ nav {
 .plan-pop { font-family: var(--mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); padding: .12rem .45rem; border-radius: 999px; }
 .plan-price { display: flex; align-items: baseline; gap: .35rem; }
 .plan-price .amt { font-size: 2.6rem; font-weight: 800; letter-spacing: -.05em; }
+/* pre-sale price, struck through — sits to the left of the live amount */
+.plan-price .was { font-size: 1.15rem; font-weight: 600; letter-spacing: -.02em; color: var(--faint); text-decoration: line-through; text-decoration-thickness: 1.5px; }
 .plan-price .per { color: var(--muted); font-size: .88rem; }
 .plan-note { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-top: .5rem; min-height: 1em; }
 .plan-note .save { color: var(--good); }
@@ -196,6 +198,17 @@ nav {
 .plan li.dim { color: var(--muted); }
 .pricing-note { margin-top: 1.5rem; font-family: var(--mono); font-size: .74rem; color: var(--muted); display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .pricing-note b { color: var(--text); font-weight: 500; }
+/* launch-sale pill under the pricing heading */
+.sale-strip {
+  display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.2rem;
+  font-size: .85rem; line-height: 1.4; color: var(--text);
+  background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 999px; padding: .5rem 1.05rem;
+}
+.sale-strip b { color: var(--accent); font-weight: 600; }
+.sale-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse-accent 2.4s var(--ease) infinite; }
+@keyframes pulse-accent { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); } 70% { box-shadow: 0 0 0 6px transparent; } }
+@media (max-width: 620px) { .sale-strip { border-radius: var(--r-lg); align-items: flex-start; } }
 
 /* === CHECKOUT — shared field / steps styles (used by the pay-alt panels) === */
 .co-desc { color: var(--muted); font-size: .9rem; margin: 0 0 1.3rem; max-width: 54ch; }
@@ -239,6 +252,8 @@ nav {
 .pay-chip { font-family: var(--mono); font-size: .58rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); padding: .1rem .45rem; border-radius: 999px; }
 .pay-card-sub { color: var(--muted); font-size: .82rem; margin-top: .3rem; }
 .pay-total { text-align: right; white-space: nowrap; flex-shrink: 0; }
+.pay-total-was { font-size: .95rem; font-weight: 600; color: var(--faint); text-decoration: line-through; text-decoration-thickness: 1.5px; margin-right: .35rem; }
+.pay-total-was[hidden] { display: none; }
 .pay-total-amt { font-size: 1.85rem; font-weight: 800; letter-spacing: -.04em; }
 .pay-total-per { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-left: .25rem; }
 .pay-btn { padding: .95rem 1.2rem; font-size: .95rem; }
@@ -347,4 +362,4 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 2.5rem; margin-top
   .spec { width: 100%; }
   .spec span { border-right: none; border-bottom: 1px solid var(--line); flex: 1 1 100%; }
 }
-@media (prefers-reduced-motion: reduce) { .rise, .js .reveal { animation: none; opacity: 1; transform: none; transition: none; } .hc-live { animation: none; } html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .rise, .js .reveal { animation: none; opacity: 1; transform: none; transition: none; } .hc-live, .sale-dot { animation: none; } html { scroll-behavior: auto; } }
