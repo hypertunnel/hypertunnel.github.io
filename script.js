@@ -43,7 +43,7 @@
     // must exist in PLAN_DAYS in automation/worker.js — otherwise the buyer silently gets
     // the 30-day fallback instead of the plan they paid for.
     // `was` is the pre-sale price, shown struck through on the plan cards.
-    monthly: { name: 'Monthly',     price: 2,  was: 5,  per: 'month', stripe: 'https://buy.stripe.com/8x5kF77R90q3yTfUQ8N203' },
+    monthly: { name: 'Monthly',     price: 2,  was: 5,  per: 'month', stripe: 'https://buy.stripe.com/8x25kF77R90q3yTfUQ8N203' },
     term:    { name: 'Term pass',   price: 6,  was: 12, per: 'term',  stripe: 'https://buy.stripe.com/28E00ldwf1xY3yT0ZW8N204' },
     year:    { name: 'School year', price: 17, was: 30, per: 'year',  stripe: 'https://buy.stripe.com/dRm28tcsb1xY3yT9ws8N205' }
   };
