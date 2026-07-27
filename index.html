@@ -70,7 +70,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
-<link rel="stylesheet" href="styles.css">
+<!-- ?v= is a cache-buster. GitHub Pages sends Cache-Control: max-age=600 on every file
+     independently, so without this a returning visitor can get a NEW index.html (new
+     prices) alongside a STALE cached script.js (old prices + old Payment Links) — which
+     is how a customer once saw $2 and got charged $5.
+     BUMP THIS DATE whenever script.js or styles.css changes. -->
+<link rel="stylesheet" href="styles.css?v=20260728">
 
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCM57K1ZP2"></script>
@@ -199,7 +204,7 @@
       <div class="plans">
         <div class="plan">
           <div class="plan-top"><span class="plan-name">Monthly</span></div>
-          <div class="plan-price"><span class="was">$5</span><span class="amt">$2</span><span class="per">/ month</span></div>
+          <div class="plan-price"><span class="was" data-was-for="monthly">$5</span><span class="amt" data-price-for="monthly">$2</span><span class="per">/ month</span></div>
           <div class="plan-note"><span class="save">60% off</span> · month to month</div>
           <ul>
             <li>Unlimited data &amp; speed</li>
@@ -210,7 +215,7 @@
         </div>
         <div class="plan feat">
           <div class="plan-top"><span class="plan-name">Term pass</span><span class="plan-pop">Popular</span></div>
-          <div class="plan-price"><span class="was">$12</span><span class="amt">$6</span><span class="per">/ term</span></div>
+          <div class="plan-price"><span class="was" data-was-for="term">$12</span><span class="amt" data-price-for="term">$6</span><span class="per">/ term</span></div>
           <div class="plan-note"><span class="save">50% off</span> · ≈ one school term</div>
           <ul>
             <li>Everything in Monthly</li>
@@ -221,7 +226,7 @@
         </div>
         <div class="plan">
           <div class="plan-top"><span class="plan-name">School year</span></div>
-          <div class="plan-price"><span class="was">$30</span><span class="amt">$17</span><span class="per">/ year</span></div>
+          <div class="plan-price"><span class="was" data-was-for="year">$30</span><span class="amt" data-price-for="year">$17</span><span class="per">/ year</span></div>
           <div class="plan-note"><span class="save">43% off</span> · best value</div>
           <ul>
             <li>Everything in Term pass</li>
@@ -254,21 +259,21 @@
             <button class="pay-plan" data-plan-key="monthly" role="radio" aria-checked="false">
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">Monthly</span>
-              <span class="pp-price">$2<span class="pp-per">/mo</span></span>
+              <span class="pp-price"><span data-price-for="monthly">$2</span><span class="pp-per">/mo</span></span>
               <span class="pp-sub">60% off · month to month</span>
             </button>
             <button class="pay-plan on" data-plan-key="term" role="radio" aria-checked="true">
               <span class="pp-tag">Most popular</span>
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">Term pass</span>
-              <span class="pp-price">$6<span class="pp-per">/term</span></span>
+              <span class="pp-price"><span data-price-for="term">$6</span><span class="pp-per">/term</span></span>
               <span class="pp-sub">50% off · ~10 weeks</span>
             </button>
             <button class="pay-plan" data-plan-key="year" role="radio" aria-checked="false">
               <span class="pp-tag alt">Best value</span>
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">School year</span>
-              <span class="pp-price">$17<span class="pp-per">/yr</span></span>
+              <span class="pp-price"><span data-price-for="year">$17</span><span class="pp-per">/yr</span></span>
               <span class="pp-sub">43% off · best value</span>
             </button>
           </div>
@@ -407,6 +412,6 @@
   <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Questions or refunds? Message support any time, or add <b>fibble__</b> on Discord. Part of the UBGHyper family.</p>
 </footer>
 
-<script src="script.js" defer></script>
+<script src="script.js?v=20260728" defer></script>
 </body>
 </html>

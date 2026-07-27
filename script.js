@@ -65,6 +65,23 @@
     var sb = document.getElementById('stripe-btn'); if (sb) sb.href = p.stripe;
   }
   document.querySelectorAll('[data-plan-key]').forEach(function(b){ b.addEventListener('click', function(){ setPlan(b.dataset.planKey); }); });
+
+  // Render every advertised price from PLANS so this file is the single source of truth.
+  // The amounts hardcoded in index.html are only a no-JS fallback; if the two ever drift
+  // (e.g. a browser holds a stale cached copy of one file but not the other) the prices
+  // shown always come from the same object that supplies the Stripe link, so the page can
+  // never advertise one amount and charge another.
+  Object.keys(PLANS).forEach(function(k){
+    var p = PLANS[k];
+    document.querySelectorAll('[data-price-for="' + k + '"]').forEach(function(el){
+      el.textContent = '$' + p.price;
+    });
+    document.querySelectorAll('[data-was-for="' + k + '"]').forEach(function(el){
+      el.textContent = p.was ? '$' + p.was : '';
+      el.hidden = !p.was;
+    });
+  });
+
   setPlan('term');
 
   // GA4 funnel event — fires when someone starts paying ("almost bought").
