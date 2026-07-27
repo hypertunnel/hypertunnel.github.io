@@ -56,14 +56,14 @@
 </script>
 
 <!-- ============================================================
-     BEFORE GOING LIVE — replace every  FILL:  in this file.
-     Payment settings live in script.js (edit these):
-       CONTACT          · order / support email (already set to admin@ubghyper.xyz)
-       PLANS[*].stripe  · a Stripe Payment Link per plan (currently TEST-mode links)
-       PLANS[*].price   · the dollar amounts (drive the whole checkout)
-     Inline in the page:
-       FILL:PAYID · your PayID (phone/email on the adult's bank)
-       (Bitcoin Lightning address is already set in the Crypto panel.)
+     LIVE — taking real payments. Prices and Stripe links live in script.js (PLANS).
+     Change them there, never here: every amount on this page is rewritten from PLANS
+     at load, so the price shown always matches the link that gets charged.
+     Amounts must also exist (in cents) in PLAN_DAYS in automation/worker.js, or the
+     buyer silently gets the 30-day fallback instead of the plan they paid for.
+     Still outstanding:
+       FILL:PAYID · the adult's PayID — the PayID panel is broken until this is set
+       FILL:STRIPE · href fallback on the card button; only shown if script.js fails
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,8 +74,10 @@
      independently, so without this a returning visitor can get a NEW index.html (new
      prices) alongside a STALE cached script.js (old prices + old Payment Links) — which
      is how a customer once saw $2 and got charged $5.
-     BUMP THIS DATE whenever script.js or styles.css changes. -->
-<link rel="stylesheet" href="styles.css?v=20260728">
+     BUMP THIS whenever script.js or styles.css changes — format YYYYMMDD + 2-digit
+     sequence, so several deploys in one day each get a distinct value. Reusing a value
+     after changing a file leaves visitors on the stale copy for up to 10 minutes. -->
+<link rel="stylesheet" href="styles.css?v=2026072802">
 
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCM57K1ZP2"></script>
@@ -412,6 +414,6 @@
   <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Questions or refunds? Message support any time, or add <b>fibble__</b> on Discord. Part of the UBGHyper family.</p>
 </footer>
 
-<script src="script.js?v=20260728" defer></script>
+<script src="script.js?v=2026072802" defer></script>
 </body>
 </html>
