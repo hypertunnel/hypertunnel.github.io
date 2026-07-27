@@ -84,6 +84,41 @@
 
   setPlan('term');
 
+  /* ---------- Acceptable-use gate ----------
+     Every route to paying (card + both manual "I've paid" CTAs) stays locked until the
+     box is ticked. The guard runs in the CAPTURE phase so it fires before the analytics
+     listeners below and can stopPropagation — otherwise a blocked click would still be
+     recorded as a begin_checkout.
+     This is a speed bump, not a legal record: it lives in the page and a determined user
+     can bypass it. Stripe's own "Require customers to accept terms of service" option on
+     each Payment Link is the one that actually stores consent against the payment. */
+  var agree = document.getElementById('agree');
+  var gatedIds = ['stripe-btn', 'cta-payid', 'cta-crypto'];
+  function syncGate(){
+    var ok = !agree || agree.checked;
+    gatedIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('is-locked', !ok);
+      el.setAttribute('aria-disabled', ok ? 'false' : 'true');
+    });
+  }
+  if (agree) {
+    agree.addEventListener('change', syncGate);
+    gatedIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('click', function(e){
+        if (agree.checked) return;
+        e.preventDefault(); e.stopPropagation();
+        var box = agree.closest('.agree');
+        if (box) { box.classList.add('nudge'); setTimeout(function(){ box.classList.remove('nudge'); }, 450); }
+        agree.focus();
+      }, true);
+    });
+    syncGate();
+  }
+
   // GA4 funnel event — fires when someone starts paying ("almost bought").
   // No-op if analytics is blocked or hasn't loaded.
   function track(name, extra){
