@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Why Your VPN Gets Blocked at School (And What Actually Works)</title>
+<meta name="description" content="School WiFi blocks Nord, Proton and free VPNs within minutes. Here's exactly how the filter spots them, why most VPNs are easy to detect, and what a VPN needs to do to get through.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f07220">
+<link rel="canonical" href="https://hypertunnel.github.io/vpn-blocked-at-school.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HyperTunnel">
+<meta property="og:url" content="https://hypertunnel.github.io/vpn-blocked-at-school.html">
+<meta property="og:title" content="Why Your VPN Gets Blocked at School (And What Actually Works)">
+<meta property="og:description" content="How school filters detect and block VPNs, why the big-name ones fail, and what's different about the traffic that gets through.">
+<meta property="og:image" content="https://hypertunnel.github.io/favicon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Why Your VPN Gets Blocked at School">
+<meta name="twitter:description" content="How school filters detect VPNs, and what's different about the traffic that gets through.">
+<meta name="twitter:image" content="https://hypertunnel.github.io/favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Your VPN Gets Blocked at School (And What Actually Works)",
+  "description": "How school filters detect and block VPNs, why the big-name ones fail, and what a VPN needs to do differently.",
+  "datePublished": "2026-07-28",
+  "dateModified": "2026-07-28",
+  "author": { "@type": "Organization", "name": "HyperTunnel" },
+  "publisher": { "@type": "Organization", "name": "HyperTunnel" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hypertunnel.github.io/vpn-blocked-at-school.html" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css?v=2026072804">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HCM57K1ZP2"></script>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 512 512" width="19" height="19" aria-hidden="true"><rect x="112" y="112" width="288" height="288" rx="78" fill="none" stroke="currentColor" stroke-width="42"/><rect x="206" y="206" width="100" height="100" rx="30" fill="currentColor"/></svg> Hyper<b>Tunnel</b></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="setup.html">Setup</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#pricing" class="btn btn-sm">Get access</a>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M3 12h2M19 12h2M5.6 18.4l1.4-1.4M17 7l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="sec" style="border-top:none">
+  <div class="wrap">
+    <article class="post">
+      <span class="kicker"><span class="i">◇</span> &nbsp;Guide</span>
+      <h1>Why your VPN gets blocked at school</h1>
+      <div class="post-meta"><span>Updated 28 July 2026</span><span>·</span><span>6 min read</span></div>
+      <p class="post-lead">You install NordVPN, it works for a day, then it stops. You try Proton, same thing. A free one from the app store doesn't connect at all. This isn't bad luck — school networks are specifically built to find and block VPNs, and most VPNs make themselves easy to find.</p>
+
+      <div class="toc">
+        <div class="toc-h">On this page</div>
+        <ol>
+          <li><a href="#how-filters-work">How school filters actually work</a></li>
+          <li><a href="#why-vpns-lose">Why big-name VPNs lose this fight</a></li>
+          <li><a href="#what-gets-through">What traffic actually gets through</a></li>
+          <li><a href="#fixes">Things that won't fix it</a></li>
+          <li><a href="#rules">The part nobody tells you</a></li>
+        </ol>
+      </div>
+
+      <h2 id="how-filters-work">How school filters actually work</h2>
+      <p>Your school doesn't block VPNs by magic. It runs a filtering appliance — Securly, Lightspeed, Smoothwall, Cisco Umbrella, or something similar — sitting between every device and the internet. That box uses four main techniques, roughly in order of how easy they are to beat.</p>
+
+      <h3>1. Domain and DNS blocking</h3>
+      <p>The simplest layer. The filter keeps a list of known VPN provider domains and refuses to resolve them. This is why you sometimes can't even <em>load</em> nordvpn.com on school WiFi, let alone connect. Commercial filters buy these lists as a subscription and they update constantly, so a new provider gets added within days of becoming popular.</p>
+
+      <h3>2. IP address blocking</h3>
+      <p>Every big VPN publishes its server IP addresses, or they're easy to collect by signing up and looking. Filter vendors maintain lists of these ranges and block them wholesale. A provider with 5,000 servers looks impressive on the marketing page, but it also means 5,000 known addresses sitting on a blocklist.</p>
+
+      <h3>3. Port and protocol blocking</h3>
+      <p>OpenVPN and WireGuard have recognisable fingerprints. WireGuard uses UDP and has a distinctive handshake. OpenVPN has a header pattern you can match on. Many schools also simply block all outbound traffic except ports 80 and 443 (normal web traffic), which kills any VPN that needs a different port.</p>
+
+      <h3>4. Deep packet inspection (DPI)</h3>
+      <p>The serious one. DPI looks <em>inside</em> the connection rather than just at where it's going. Even though your traffic is encrypted, the way a connection starts — the TLS handshake — is not fully hidden. The filter can read the <strong>SNI field</strong>, which is the domain name your device announces before encryption kicks in, and it can fingerprint the shape and timing of the handshake itself.</p>
+      <p>This is why "it's encrypted so they can't see it" is only half true. They can't read your messages, but they can often tell <em>what kind of thing</em> you're doing, and that's all a filter needs.</p>
+
+      <div class="tldr">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><strong>The short version:</strong> a filter doesn't need to decrypt your traffic. It just needs to recognise that the traffic looks like a VPN. Most VPNs are trivially recognisable.</p>
+      </div>
+
+      <h2 id="why-vpns-lose">Why big-name VPNs lose this fight</h2>
+      <p>Nord, Express, Surfshark and Proton are genuinely good products. They're built to stop your internet provider selling your browsing history and to let you watch a different country's Netflix. That's a completely different problem from getting past a filter that is actively hunting for them.</p>
+      <p>Three structural reasons they struggle on school networks:</p>
+      <ul>
+        <li><strong>They're famous.</strong> Being a household name is a marketing win and a filtering disaster. You are the first thing on every blocklist.</li>
+        <li><strong>Their infrastructure is public.</strong> Server lists, IP ranges and domains are all published or easily harvested.</li>
+        <li><strong>Their protocols are standard.</strong> WireGuard and OpenVPN are excellent protocols that were never designed to hide the fact they exist. Some providers bolt on an "obfuscated" or "stealth" mode, which helps, but it's an add-on to a design that wasn't built for it.</li>
+      </ul>
+      <p>Free VPNs fail even harder, and for worse reasons. They're on every blocklist, they're overloaded, and the ones that do work often pay for themselves by logging and selling exactly the data you installed them to protect. If a VPN costs nothing, your data is usually the product.</p>
+
+      <h2 id="what-gets-through">What traffic actually gets through</h2>
+      <p>Work backwards from how the filter decides. It's looking for traffic that doesn't look like normal browsing. So the traffic that survives is traffic that is <em>indistinguishable</em> from normal browsing.</p>
+      <p>That's the idea behind newer protocols like <strong>Reality</strong>, which is what HyperTunnel uses. Rather than announcing itself and hoping the filter doesn't care, it borrows the TLS handshake of a genuinely large website. To the filter, the connection looks like an ordinary HTTPS session to a major domain — the same thing thousands of devices on that network are doing every minute.</p>
+      <p>The practical differences that matter:</p>
+      <ul>
+        <li><strong>No recognisable handshake.</strong> There's no VPN fingerprint to match, because the handshake is a real TLS 1.3 handshake.</li>
+        <li><strong>No VPN domain to block.</strong> The connection goes to a plain IP address, not to a domain sitting on a subscription blocklist.</li>
+        <li><strong>Not a famous target.</strong> A small provider's server isn't on a vendor blocklist the way a household name's entire IP range is.</li>
+        <li><strong>Ordinary ports.</strong> It runs where normal web traffic runs, so blocking it means blocking the web.</li>
+      </ul>
+      <p>None of this is magic, and no honest provider will tell you it's permanent. A network administrator who specifically notices one address getting a lot of traffic can block that address. The difference is that this is manual work targeting one server, rather than a checkbox that blocks an entire well-known provider.</p>
+
+      <div class="post-cta">
+        <h4>Built for exactly this problem</h4>
+        <p>HyperTunnel runs Reality on Australian servers, and it's made by people who were dealing with school filters themselves. One link, works on any phone or laptop, about two minutes to set up. If it doesn't get through on your network, there's a 3-day refund.</p>
+        <div class="row">
+          <a href="index.html#pricing" class="btn">See plans</a>
+          <span class="from">from <b>$2</b>/month · 3-day money-back</span>
+        </div>
+      </div>
+
+      <h2 id="fixes">Things that won't fix it</h2>
+      <p>Before you spend money, some approaches that get recommended constantly and mostly don't work:</p>
+      <ul>
+        <li><strong>Web proxy sites.</strong> The ones that let you paste a URL into a box. They're on every blocklist, they break on most modern sites, and the sketchy ones inject ads or harvest whatever you type. They also do nothing for apps.</li>
+        <li><strong>Browser extension "VPNs".</strong> Most are just proxies that cover browser tabs and nothing else. Managed devices frequently block extension installs anyway.</li>
+        <li><strong>Switching to mobile data.</strong> This genuinely works, because you've left the school network entirely — but it burns your data allowance and does nothing for a laptop.</li>
+        <li><strong>Changing your DNS to 8.8.8.8.</strong> Occasionally beats the laziest possible filter. Any filter doing DPI, or intercepting DNS at the gateway, ignores it completely.</li>
+        <li><strong>Tor.</strong> Extremely detectable, blocked nearly everywhere, and slow enough to be unusable for video.</li>
+      </ul>
+
+      <h2 id="rules">The part nobody tells you</h2>
+      <p>A VPN encrypts your connection and hides your browsing from the network. It does not make you invisible or immune to consequences.</p>
+      <p>If you're using a <strong>school-managed device</strong> — a laptop or Chromebook they issued you — that device may have monitoring software installed directly on it. Software running on the device itself sees what you do <em>before</em> it ever reaches the network, so no VPN can help with that. On a managed device, the honest answer is that a VPN doesn't give you the privacy you might assume it does. <a href="school-chromebook-vpn.html">We wrote about Chromebooks specifically here.</a></p>
+      <p>Separately: using a VPN will often breach your school's acceptable-use policy, even where it isn't illegal. That's a real risk and it's between you and your school. We're not going to pretend otherwise, and we'd rather you decide with the facts than find out later. Most people buying this are using it on their <em>own</em> phone on the school's WiFi, which is a different situation from a school-issued laptop — but check your own policy.</p>
+
+      <div class="related">
+        <div class="related-h">Related guides</div>
+        <div class="related-grid">
+          <a class="related-card" href="vpn-school-wifi-guide.html"><span>How to use a VPN on school WiFi</span><em>The complete setup walkthrough</em></a>
+          <a class="related-card" href="free-vpn-school-wifi.html"><span>Are free VPNs safe for school?</span><em>What you actually pay with</em></a>
+          <a class="related-card" href="school-chromebook-vpn.html"><span>VPNs on a school Chromebook</span><em>The honest answer</em></a>
+          <a class="related-card" href="setup.html"><span>HyperTunnel setup guide</span><em>Connected in two minutes</em></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 512 512" width="19" height="19" aria-hidden="true"><rect x="112" y="112" width="288" height="288" rx="78" fill="none" stroke="currentColor" stroke-width="42"/><rect x="206" y="206" width="100" height="100" rx="30" fill="currentColor"/></svg> Hyper<b>Tunnel</b></a>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="setup.html">Setup</a>
+      <a href="legal.html">Privacy &amp; Terms</a>
+      <a href="#" id="foot-support">Support</a>
+    </div>
+  </div>
+  <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Part of the UBGHyper family.</p>
+</footer>
+
+<script src="legal.js" defer></script>
+</body>
+</html>

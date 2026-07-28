@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Can You Use a VPN on a School Chromebook? The Honest Answer</title>
+<meta name="description" content="Whether a VPN can run on a school-managed Chromebook, why installs are usually blocked, why monitoring software means a VPN wouldn't help anyway, and what actually works instead.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f07220">
+<link rel="canonical" href="https://hypertunnel.github.io/school-chromebook-vpn.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="HyperTunnel">
+<meta property="og:url" content="https://hypertunnel.github.io/school-chromebook-vpn.html">
+<meta property="og:title" content="Can You Use a VPN on a School Chromebook?">
+<meta property="og:description" content="Why managed Chromebooks block VPNs, why one wouldn't help anyway, and what actually works instead.">
+<meta property="og:image" content="https://hypertunnel.github.io/favicon.svg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Can You Use a VPN on a School Chromebook?">
+<meta name="twitter:description" content="Why managed Chromebooks block VPNs, and what works instead.">
+<meta name="twitter:image" content="https://hypertunnel.github.io/favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Can You Use a VPN on a School Chromebook? The Honest Answer",
+  "description": "Why managed Chromebooks block VPN installs, why device-level monitoring means a VPN would not help anyway, and the realistic alternatives.",
+  "datePublished": "2026-07-28",
+  "dateModified": "2026-07-28",
+  "author": { "@type": "Organization", "name": "HyperTunnel" },
+  "publisher": { "@type": "Organization", "name": "HyperTunnel" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://hypertunnel.github.io/school-chromebook-vpn.html" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can you install a VPN on a school Chromebook?", "acceptedAnswer": { "@type": "Answer", "text": "Usually not. School-managed Chromebooks are enrolled in Google Admin Console, where administrators can block installing extensions and Android apps outright. If installs are blocked, no VPN of any kind can run on the device." } },
+    { "@type": "Question", "name": "Would a VPN even help on a school Chromebook?", "acceptedAnswer": { "@type": "Answer", "text": "Often no. Managed Chromebooks commonly run monitoring software that inspects activity on the device itself, before traffic is encrypted and sent. A VPN cannot hide activity that is observed before the VPN is involved." } },
+    { "@type": "Question", "name": "What works instead of a VPN on a school Chromebook?", "acceptedAnswer": { "@type": "Answer", "text": "Using your own phone or personal laptop on the school WiFi is the practical alternative. You control that device, nothing is monitoring it locally, and a VPN works normally on it." } }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css?v=2026072804">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HCM57K1ZP2"></script>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 512 512" width="19" height="19" aria-hidden="true"><rect x="112" y="112" width="288" height="288" rx="78" fill="none" stroke="currentColor" stroke-width="42"/><rect x="206" y="206" width="100" height="100" rx="30" fill="currentColor"/></svg> Hyper<b>Tunnel</b></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="setup.html">Setup</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#pricing" class="btn btn-sm">Get access</a>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M3 12h2M19 12h2M5.6 18.4l1.4-1.4M17 7l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="sec" style="border-top:none">
+  <div class="wrap">
+    <article class="post">
+      <span class="kicker"><span class="i">◇</span> &nbsp;Guide</span>
+      <h1>Can you use a VPN on a school Chromebook?</h1>
+      <div class="post-meta"><span>Updated 28 July 2026</span><span>·</span><span>5 min read</span></div>
+      <p class="post-lead">Usually not — and we'd rather tell you that up front than sell you something that won't work. Here's what's actually going on with managed Chromebooks, why a VPN often wouldn't help even if you could install one, and what people do instead.</p>
+
+      <div class="tldr">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><strong>If you only read one line:</strong> on a school-managed Chromebook, no VPN can be relied on. Use your own phone on the school WiFi instead — that works properly.</p>
+      </div>
+
+      <div class="toc">
+        <div class="toc-h">On this page</div>
+        <ol>
+          <li><a href="#managed">What "managed" actually means</a></li>
+          <li><a href="#installs">Why you can't install anything</a></li>
+          <li><a href="#pointless">Why a VPN wouldn't help anyway</a></li>
+          <li><a href="#personal">Personal Chromebooks are different</a></li>
+          <li><a href="#instead">What to do instead</a></li>
+        </ol>
+      </div>
+
+      <h2 id="managed">What "managed" actually means</h2>
+      <p>A school Chromebook is enrolled in Google Admin Console. Enrolment isn't a setting on the device — it's a policy layer applied from outside, tied to the hardware and your school account. It survives sign-out, restarts and, on most fleets, a factory reset. The device belongs to the school and behaves accordingly.</p>
+      <p>From that console, administrators can control an enormous amount: which extensions and apps can be installed, which URLs are reachable, whether developer mode works, whether Linux can be enabled, what network settings you can touch, and what activity gets reported. These controls apply to your school account on that device regardless of what network you're on — including your home WiFi.</p>
+
+      <h2 id="installs">Why you can't install anything</h2>
+      <p>Nearly every school fleet is configured to block installs. In practice that means:</p>
+      <ul>
+        <li><strong>Chrome extensions are allowlisted.</strong> Only extensions the school has approved will install. VPN extensions are essentially never on that list.</li>
+        <li><strong>The Play Store is usually off.</strong> Android app support is commonly disabled entirely on school devices, so Android VPN apps aren't an option.</li>
+        <li><strong>Linux (Crostini) is typically disabled.</strong> That closes the workaround of installing a VPN client in a Linux container.</li>
+        <li><strong>Developer mode is blocked.</strong> Enterprise enrolment prevents it, and attempting to bypass enrolment on a device you don't own is a bad idea for reasons beyond the technical.</li>
+        <li><strong>Built-in VPN config is locked.</strong> ChromeOS has native VPN settings, but administrators can restrict who may add a configuration.</li>
+      </ul>
+      <p>This is a device restriction, not a limitation of any particular VPN. No provider — us, Nord, anyone — can install software onto a device that refuses installs. Anyone claiming their VPN works on a locked-down school Chromebook is either misunderstanding the question or not being straight with you.</p>
+
+      <h2 id="pointless">Why a VPN wouldn't help anyway</h2>
+      <p>This is the part that gets missed, and it matters more than the install problem.</p>
+      <p>A VPN protects traffic <em>in transit</em>. It encrypts data leaving your device so the network in between can't read it. That's genuinely useful — on your own phone, on school WiFi, it works exactly as advertised.</p>
+      <p>But a managed Chromebook frequently runs monitoring at the device level. Products like GoGuardian, Securly, Lightspeed and Gaggle can operate inside the browser and the operating system, where they see what's on screen <em>before</em> anything gets encrypted. Depending on configuration, that can include page contents, typed text, screenshots and browsing history reported to a dashboard.</p>
+      <p>Encryption after the fact doesn't help with an observer sitting before the encryption. Even in the hypothetical where you got a VPN running, the monitoring software would carry on reporting normally. You'd have added a VPN and changed nothing about what the school can see.</p>
+
+      <h2 id="personal">Personal Chromebooks are different</h2>
+      <p>Worth separating clearly: if it's <strong>your own</strong> Chromebook that you bought, none of the above applies. It isn't enrolled, there's no admin console, no monitoring software, and you can install what you like.</p>
+      <p>On a personal Chromebook you have real options — Android VPN apps via the Play Store, Chrome extensions, or a Linux container with a proper client. A personal Chromebook on school WiFi behaves like any other personal device, and a VPN works normally on it.</p>
+      <p>The distinction is ownership and enrolment, not the hardware. Two identical Chromebooks can behave completely differently depending on whether one is enrolled.</p>
+
+      <h2 id="instead">What to do instead</h2>
+      <p>The realistic answer, and what nearly everyone ends up doing:</p>
+      <p><strong>Use your own phone on the school WiFi.</strong> You own the device, nothing is monitoring it locally, and you can install whatever you want. Connect the phone to the school network, run a VPN on it, and it works the way you expected. If you need a bigger screen, a personal laptop on the school WiFi does the same job.</p>
+      <p>This is the situation nearly all our customers are actually in — a personal phone on a filtered school network — and it's what HyperTunnel is built for. If your only device is a school-issued Chromebook, we'd honestly rather you didn't buy from us, because it won't work.</p>
+      <p>Two things that are <em>not</em> good ideas: trying to unenroll or jailbreak a school device (it's school property, and that escalates a rules problem into a much more serious one), and using a random web proxy site (blocked, broken on modern sites, and often harvesting whatever you type into them).</p>
+
+      <div class="post-cta">
+        <h4>On your own phone, it just works</h4>
+        <p>HyperTunnel runs on iPhone, iPad, Android, Windows and Mac. One link, about two minutes. Sydney servers, Reality protocol, built for filtered school networks — and a 3-day refund if it doesn't get through on yours.</p>
+        <div class="row">
+          <a href="index.html#pricing" class="btn">See plans</a>
+          <span class="from">from <b>$2</b>/month · 3-day money-back</span>
+        </div>
+      </div>
+
+      <div class="related">
+        <div class="related-h">Related guides</div>
+        <div class="related-grid">
+          <a class="related-card" href="vpn-blocked-at-school.html"><span>Why your VPN gets blocked</span><em>How school filters find them</em></a>
+          <a class="related-card" href="vpn-school-wifi-guide.html"><span>How to use a VPN on school WiFi</span><em>The complete setup walkthrough</em></a>
+          <a class="related-card" href="free-vpn-school-wifi.html"><span>Are free VPNs safe for school?</span><em>What you actually pay with</em></a>
+          <a class="related-card" href="setup.html"><span>HyperTunnel setup guide</span><em>Connected in two minutes</em></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 512 512" width="19" height="19" aria-hidden="true"><rect x="112" y="112" width="288" height="288" rx="78" fill="none" stroke="currentColor" stroke-width="42"/><rect x="206" y="206" width="100" height="100" rx="30" fill="currentColor"/></svg> Hyper<b>Tunnel</b></a>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="setup.html">Setup</a>
+      <a href="legal.html">Privacy &amp; Terms</a>
+      <a href="#" id="foot-support">Support</a>
+    </div>
+  </div>
+  <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Part of the UBGHyper family.</p>
+</footer>
+
+<script src="legal.js" defer></script>
+</body>
+</html>
