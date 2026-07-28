@@ -44,9 +44,9 @@
     // the Worker reads the real billing interval off the invoice — so changing a price
     // here plus in Stripe is the whole job.
     // Optional `was:` renders a struck-through anchor price on the cards.
-    monthly: { name: 'Monthly',     price: 4,  per: 'month', stripe: 'https://buy.stripe.com/8x25kF77R90q3yTfUQ8N203' },
-    term:    { name: 'Term pass',   price: 9, per: 'term',  stripe: 'https://buy.stripe.com/28E00ldwf1xY3yT0ZW8N204' },
-    year:    { name: 'School year', price: 24, per: 'year',  stripe: 'https://buy.stripe.com/dRm28tcsb1xY3yT9ws8N205' }
+    monthly: { name: 'Monthly',     price: 4,  per: 'month', stripe: 'https://buy.stripe.com/bJe6oJ3VFccCfhB5gc8N206' },
+    term:    { name: 'Term pass',   price: 9, per: 'term',  stripe: 'https://buy.stripe.com/bJe4gB8bV4Ka0mHeQM8N207' },
+    year:    { name: 'School year', price: 24, per: 'year',  stripe: 'https://buy.stripe.com/3cIfZj2RB7Wm5H1bEA8N208' }
   };
   /* ------------------------------------------------------------------- */
 
