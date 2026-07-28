@@ -23,6 +23,15 @@
   //   https://hypertunnel.github.io/setup.html?purchased=1&value=<price>
   // Stripe (dashboard) stays the source of truth for actual sales — this just lets GA
   // draw the visitors -> checkout -> purchase funnel.
+  // Post-payment acknowledgement. Stripe's After-payment redirect carries ?purchased=1.
+  try {
+    var pq = new URLSearchParams(location.search);
+    if (pq.get('purchased') === '1') {
+      var pb = document.getElementById('paidBanner');
+      if (pb) pb.hidden = false;
+    }
+  } catch (e) {}
+
   try {
     var q = new URLSearchParams(location.search);
     if (window.gtag && q.get('purchased') === '1') {

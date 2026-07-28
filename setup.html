@@ -69,6 +69,16 @@ nav { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var
 .icon-btn { border: 1px solid var(--border); color: var(--muted); width: 34px; height: 34px; border-radius: var(--r); display: grid; place-items: center; transition: color var(--dur), border-color var(--dur); }
 .icon-btn:hover { color: var(--text); border-color: var(--faint); }
 
+/* post-payment banner */
+.paid-banner { background: color-mix(in srgb, var(--good) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--good) 30%, transparent); padding: 1.1rem 0; }
+.paid-banner[hidden] { display: none; }
+.paid-in { display: flex; gap: .9rem; align-items: flex-start; }
+.paid-ico { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; background: color-mix(in srgb, var(--good) 18%, transparent); color: var(--good); }
+.paid-ico svg { width: 16px; height: 16px; }
+.paid-in b { font-weight: 600; }
+.paid-in p { color: var(--muted); font-size: .88rem; margin-top: .2rem; max-width: 62ch; }
+.paid-in p b { color: var(--text); }
+
 /* doc hero */
 .doc-hero { padding: 3.5rem 0 2.5rem; }
 .doc-hero .kicker { display: block; margin-bottom: 1rem; }
@@ -184,6 +194,21 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 2.5rem; margin-top
 </nav>
 
 <main>
+  <!-- Shown only when Stripe redirects here after a successful payment (?purchased=1).
+       Without it a customer who has just paid lands on a generic guide with no sign the
+       payment worked — which reads as "did it go through?" and generates support mail. -->
+  <section class="paid-banner" id="paidBanner" hidden>
+    <div class="wrap">
+      <div class="paid-in">
+        <div class="paid-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>
+          <b>Payment received — you're all set.</b>
+          <p>Your personal link is on its way by email, usually within a minute. <b>Check your spam or junk folder</b> if it's not in your inbox. Then follow the steps below.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="doc-hero">
     <div class="wrap">
       <span class="kicker"><span class="i">◇</span> Setup guide</span>
