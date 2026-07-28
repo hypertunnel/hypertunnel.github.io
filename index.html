@@ -37,9 +37,9 @@
   "description": "A private VPN with Australian servers that gets past school WiFi filters. Works on iPhone, Android, Windows and Mac.",
   "brand": { "@type": "Brand", "name": "HyperTunnel" },
   "offers": [
-    { "@type": "Offer", "name": "Monthly", "price": "2.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" },
-    { "@type": "Offer", "name": "Term pass", "price": "6.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" },
-    { "@type": "Offer", "name": "School year", "price": "17.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+    { "@type": "Offer", "name": "Monthly", "price": "4.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "Term pass", "price": "9.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "School year", "price": "24.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
   ]
 }
 </script>
@@ -77,7 +77,7 @@
      BUMP THIS whenever script.js or styles.css changes — format YYYYMMDD + 2-digit
      sequence, so several deploys in one day each get a distinct value. Reusing a value
      after changing a file leaves visitors on the stale copy for up to 10 minutes. -->
-<link rel="stylesheet" href="styles.css?v=2026072804">
+<link rel="stylesheet" href="styles.css?v=2026072805">
 
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCM57K1ZP2"></script>
@@ -202,13 +202,12 @@
         <span class="kicker">Pricing</span>
         <h2>One price, everything included.</h2>
         <p>Every plan: all servers, all devices, unlimited data. Pay by card, PayID or crypto.</p>
-        <div class="sale-strip"><span class="sale-dot" aria-hidden="true"></span><b>Launch sale</b> — up to 60% off. New lower prices, live now.</div>
       </div>
       <div class="plans">
         <div class="plan">
           <div class="plan-top"><span class="plan-name">Monthly</span></div>
-          <div class="plan-price"><span class="was" data-was-for="monthly">$5</span><span class="amt" data-price-for="monthly">$2</span><span class="per">/ month</span></div>
-          <div class="plan-note"><span class="save">60% off</span> · month to month</div>
+          <div class="plan-price"><span class="amt" data-price-for="monthly">$4</span><span class="per">/ month</span></div>
+          <div class="plan-note">Month to month, cancel anytime.</div>
           <ul>
             <li>Unlimited data &amp; speed</li>
             <li>All servers &amp; devices</li>
@@ -218,8 +217,8 @@
         </div>
         <div class="plan feat">
           <div class="plan-top"><span class="plan-name">Term pass</span><span class="plan-pop">Popular</span></div>
-          <div class="plan-price"><span class="was" data-was-for="term">$12</span><span class="amt" data-price-for="term">$6</span><span class="per">/ term</span></div>
-          <div class="plan-note"><span class="save">50% off</span> · ≈ one school term</div>
+          <div class="plan-price"><span class="amt" data-price-for="term">$9</span><span class="per">/ term</span></div>
+          <div class="plan-note">≈ one school term · <span class="save">cheaper than monthly</span></div>
           <ul>
             <li>Everything in Monthly</li>
             <li>Set &amp; forget for the term</li>
@@ -229,8 +228,8 @@
         </div>
         <div class="plan">
           <div class="plan-top"><span class="plan-name">School year</span></div>
-          <div class="plan-price"><span class="was" data-was-for="year">$30</span><span class="amt" data-price-for="year">$17</span><span class="per">/ year</span></div>
-          <div class="plan-note"><span class="save">43% off</span> · best value</div>
+          <div class="plan-price"><span class="amt" data-price-for="year">$24</span><span class="per">/ year</span></div>
+          <div class="plan-note"><span class="save">save 50%</span> vs monthly · best value</div>
           <ul>
             <li>Everything in Term pass</li>
             <li>Locked-in lowest price</li>
@@ -262,22 +261,22 @@
             <button class="pay-plan" data-plan-key="monthly" role="radio" aria-checked="false">
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">Monthly</span>
-              <span class="pp-price"><span data-price-for="monthly">$2</span><span class="pp-per">/mo</span></span>
-              <span class="pp-sub">60% off · month to month</span>
+              <span class="pp-price"><span data-price-for="monthly">$4</span><span class="pp-per">/mo</span></span>
+              <span class="pp-sub">Month to month</span>
             </button>
             <button class="pay-plan on" data-plan-key="term" role="radio" aria-checked="true">
               <span class="pp-tag">Most popular</span>
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">Term pass</span>
-              <span class="pp-price"><span data-price-for="term">$6</span><span class="pp-per">/term</span></span>
-              <span class="pp-sub">50% off · ~10 weeks</span>
+              <span class="pp-price"><span data-price-for="term">$9</span><span class="pp-per">/term</span></span>
+              <span class="pp-sub">~10 weeks</span>
             </button>
             <button class="pay-plan" data-plan-key="year" role="radio" aria-checked="false">
               <span class="pp-tag alt">Best value</span>
               <span class="pp-check" aria-hidden="true"></span>
               <span class="pp-name">School year</span>
-              <span class="pp-price"><span data-price-for="year">$17</span><span class="pp-per">/yr</span></span>
-              <span class="pp-sub">43% off · best value</span>
+              <span class="pp-price"><span data-price-for="year">$24</span><span class="pp-per">/yr</span></span>
+              <span class="pp-sub">Save 50% vs monthly</span>
             </button>
           </div>
         </div>
@@ -293,7 +292,7 @@
                 <div class="pay-card-title">Pay by card <span class="pay-chip">Instant</span></div>
                 <div class="pay-card-sub">Visa · Mastercard · Apple &amp; Google&nbsp;Pay</div>
               </div>
-              <div class="pay-total"><span class="pay-total-was" id="payWas">$12</span><span class="pay-total-amt" id="payTotal">$6</span><span class="pay-total-per" id="payPer">/ term</span></div>
+              <div class="pay-total"><span class="pay-total-amt" id="payTotal">$9</span><span class="pay-total-per" id="payPer">/ term</span></div>
             </div>
             <label class="agree" for="agree">
               <input type="checkbox" id="agree">
@@ -420,6 +419,6 @@
   <p class="foot-fine">HyperTunnel encrypts your internet connection for privacy and security. You're responsible for complying with your school's or network's acceptable-use policy. Questions or refunds? Message support any time, or add <b>fibble__</b> on Discord. Part of the UBGHyper family.</p>
 </footer>
 
-<script src="script.js?v=2026072804" defer></script>
+<script src="script.js?v=2026072805" defer></script>
 </body>
 </html>

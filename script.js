@@ -38,14 +38,15 @@
   /* ---------- PAYMENT CONFIG — edit these before going live ---------- */
   var CONTACT = 'admin@ubghyper.xyz';          // order / support email
   var PLANS = {
-    // LIVE Stripe Payment Links (created 2026-07-28, one-time, AUD).
-    // `price` must match the amount on the linked Stripe product, and the amount in cents
-    // must exist in PLAN_DAYS in automation/worker.js — otherwise the buyer silently gets
-    // the 30-day fallback instead of the plan they paid for.
-    // `was` is the pre-sale price, shown struck through on the plan cards.
-    monthly: { name: 'Monthly',     price: 2,  was: 5,  per: 'month', stripe: 'https://buy.stripe.com/8x25kF77R90q3yTfUQ8N203' },
-    term:    { name: 'Term pass',   price: 6,  was: 12, per: 'term',  stripe: 'https://buy.stripe.com/28E00ldwf1xY3yT0ZW8N204' },
-    year:    { name: 'School year', price: 17, was: 30, per: 'year',  stripe: 'https://buy.stripe.com/dRm28tcsb1xY3yT9ws8N205' }
+    // LIVE Stripe Payment Links — RECURRING subscriptions, AUD.
+    // `price` must match the amount on the linked Stripe price, or the page advertises
+    // one number and charges another. Access length is NOT derived from the amount —
+    // the Worker reads the real billing interval off the invoice — so changing a price
+    // here plus in Stripe is the whole job.
+    // Optional `was:` renders a struck-through anchor price on the cards.
+    monthly: { name: 'Monthly',     price: 4,  per: 'month', stripe: 'https://buy.stripe.com/8x25kF77R90q3yTfUQ8N203' },
+    term:    { name: 'Term pass',   price: 9, per: 'term',  stripe: 'https://buy.stripe.com/28E00ldwf1xY3yT0ZW8N204' },
+    year:    { name: 'School year', price: 24, per: 'year',  stripe: 'https://buy.stripe.com/dRm28tcsb1xY3yT9ws8N205' }
   };
   /* ------------------------------------------------------------------- */
 
