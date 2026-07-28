@@ -23,6 +23,33 @@
   //   https://hypertunnel.github.io/setup.html?purchased=1&value=<price>
   // Stripe (dashboard) stays the source of truth for actual sales — this just lets GA
   // draw the visitors -> checkout -> purchase funnel.
+  // Self-serve link resend. The Worker always answers with the same generic message
+  // whether or not the address matched, so there is nothing here to branch on — just
+  // show what it says.
+  var RESEND_URL = 'https://hypertunnel-provision.ames-pearson.workers.dev/resend';
+  var rf = document.getElementById('resendForm');
+  if (rf) rf.addEventListener('submit', function(e){
+    e.preventDefault();
+    var input = document.getElementById('resendEmail');
+    var btn = document.getElementById('resendBtn');
+    var msg = document.getElementById('resendMsg');
+    if (!input.value) return;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch(RESEND_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: input.value })
+    }).then(function(r){ return r.json(); }).then(function(d){
+      msg.textContent = (d && d.message) || 'Sent — check your inbox and spam folder.';
+      msg.hidden = false;
+      btn.textContent = 'Sent';
+    }).catch(function(){
+      msg.textContent = 'Could not reach the server. Email admin@ubghyper.xyz and we’ll sort it by hand.';
+      msg.hidden = false;
+      btn.disabled = false; btn.textContent = 'Resend my link';
+    });
+  });
+
   // Post-payment acknowledgement. Stripe's After-payment redirect carries ?purchased=1.
   try {
     var pq = new URLSearchParams(location.search);

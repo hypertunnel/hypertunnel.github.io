@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://hypertunnel-provision.ames-pearson.workers.dev https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>HyperTunnel Setup Guide</title>
 <meta name="description" content="Get connected to HyperTunnel in about two minutes. Step-by-step setup for iPhone, Android, Windows and Mac, plus troubleshooting.">
@@ -152,6 +152,15 @@ nav { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var
 .qa[open] summary .chev { transform: rotate(45deg); color: var(--accent); }
 .qa .a { padding: 0 0 1.15rem; color: var(--muted); font-size: .9rem; max-width: 68ch; }
 .qa .a a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* self-serve resend */
+.resend { display: flex; gap: .5rem; margin: .9rem 0 .6rem; flex-wrap: wrap; }
+.resend input { flex: 1 1 220px; min-width: 0; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: .55rem .8rem; color: var(--text); font: inherit; font-size: .88rem; }
+.resend input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.resend button[disabled] { opacity: .5; cursor: not-allowed; }
+.resend-msg { font-size: .86rem; margin: .3rem 0 .5rem; color: var(--good); }
+.resend-msg[hidden] { display: none; }
+.resend-fine { display: block; font-size: .78rem; color: var(--faint); line-height: 1.5; }
 
 /* help */
 .help { text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.5rem 1.5rem; }
@@ -314,7 +323,15 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 2.5rem; margin-top
       <details class="qa"><summary>Connected, but pages won't load <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Toggle the connection off and back on. Make sure your device's clock is set to <b>automatic</b> (a wrong clock breaks the tunnel). On a laptop, try switching Hiddify to <b>Proxy</b> mode in its settings.</div></details>
       <details class="qa"><summary>It's slow <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Disconnect and reconnect first. If it's still slow, <a href="#help">message us</a> and we can move you to a fresher server.</div></details>
       <details class="qa"><summary>It worked, then stopped at school <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">The school may have blocked that server. <a href="#help">Message us</a> and we'll rotate you to a fresh link, usually the same day. Your subscription keeps running, so there's nothing to re-buy.</div></details>
-      <details class="qa"><summary>I lost my link <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">No worries, <a href="#help">message us</a> with the email you ordered under and we'll resend it.</div></details>
+      <details class="qa"><summary>I lost my link, or the email never arrived <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">
+        Check your spam or junk folder first — that's where it usually is. Otherwise enter the email you ordered with and we'll send it again straight away:
+        <form class="resend" id="resendForm">
+          <input type="email" id="resendEmail" placeholder="you@example.com" autocomplete="email" required aria-label="Your order email">
+          <button type="submit" class="btn btn-sm" id="resendBtn">Resend my link</button>
+        </form>
+        <p class="resend-msg" id="resendMsg" hidden></p>
+        <span class="resend-fine">For your privacy the link is only ever emailed to the address you type — it's never shown on screen, so entering someone else's address won't reveal anything. Limited to one resend per address every 10 minutes.</span>
+      </div></details>
       <details class="qa"><summary>Nothing installs on my school Chromebook <svg class="chev icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="15" height="15"><path d="M12 5v14M5 12h14"/></svg></summary><div class="a">Fully locked-down, school-managed Chromebooks block all app installs, so no VPN can run on them. That's a device restriction, not HyperTunnel. Use your <b>own phone</b> on the school WiFi instead and it works fine.</div></details>
     </div>
   </section>
